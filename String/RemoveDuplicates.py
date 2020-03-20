@@ -13,15 +13,25 @@ def remove_duplicates(string):
     for char in string:
         counter[char] += 1
     
-    print(counter)
     char_list = []
     for char in string:
-        if counter[char] == 1:
+        if counter[char] >= 1:
             char_list.append(char)
+            # 0 means char is used, do not use it again
+            counter[char] = 0
     
     return "".join(char_list)
+    
+t = int(input())
+for i in range(t):
+    string = input()
+    print(remove_duplicates(string))
 
 
 # Test 1
 s = "geeksforgeeks"
+print(remove_duplicates(s))
+
+# Test 2
+s = "geeks for geeks"
 print(remove_duplicates(s))
